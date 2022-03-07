@@ -18,7 +18,7 @@ clean:
 	make clean -C ./mandatory/; make clean -C ./bonus/;
 
 fclean: 
-	make fclean -C ./mandatory/; make fclean -C ./bonus/; rm $(NAME) $(NAME_BONUS);
+	make fclean -C ./mandatory/; make fclean -C ./bonus/; rm -f $(NAME) $(NAME_BONUS);
 
 re: fclean all
 
