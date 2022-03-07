@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:37:21 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/07 16:11:07 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:20:12 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	main(int argc, char **argv, char **env)
 
 	glb = 0;
 	ft_choosebehaviour(argc, argv, env, &glb);
-	glb->fdfiles[1] = open(glb->outfile, 0x209, 0644);
+	glb->fdfiles[1] = open(glb->outfile, 0x601, 0644);
 	i = 0;
 	while (glb->cmds[i + 1])
 		ft_domiddlecmds(glb, fds, i++);

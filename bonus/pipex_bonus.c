@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:37:21 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/07 15:33:35 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:18:41 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	ft_choosebehaviour(int argc, char **argv, char **env, t_global **glb)
 		ft_checkaccess(*glb);
 		(*glb)->fdfiles[0] = open((*glb)->infile, O_RDONLY);
 		dup2((*glb)->fdfiles[0], 0);
+		(*glb)->fdfiles[1] = open((*glb)->outfile, 0x601, 0644);
 		return (0);
 	}
 	else
@@ -76,6 +77,7 @@ int	ft_choosebehaviour(int argc, char **argv, char **env, t_global **glb)
 		*glb = ft_initialize(argc - 1, argv + 1, env);
 		ft_cleanfreestring(&(*glb)->infile);
 		ft_checkaccess(*glb);
+		(*glb)->fdfiles[1] = open((*glb)->outfile, 0x209, 0644);
 		return (1);
 	}
 }
@@ -89,7 +91,6 @@ int	main(int argc, char **argv, char **env)
 	glb = 0;
 	if (ft_choosebehaviour(argc, argv, env, &glb))
 		ft_heredoc(glb, argv[2], fds);
-	glb->fdfiles[1] = open(glb->outfile, 0x209, 0644);
 	i = 0;
 	while (glb->cmds[i + 1])
 		ft_domiddlecmds(glb, fds, i++);
