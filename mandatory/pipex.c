@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:37:21 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/07 15:29:01 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:11:07 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_heredocprocess(t_global *glb, int *fds, char *s2)
 	close(fds[1]);
 	wait(0);
 }
-
 
 int	ft_choosebehaviour(int argc, char **argv, char **env, t_global **glb)
 {
