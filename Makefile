@@ -3,11 +3,11 @@ NAME = pipex
 NAME_BONUS = pipex_bonus
 
 $(NAME): ./mandatory/*
-	make -C ./mandatory/;
+	cd ./mandatory; make; cd ..;
 	cp ./mandatory/pipex ./pipex
 
 $(NAME_BONUS): ./bonus/*
-	make -C ./bonus/;
+	cd ./bonus; make all; cd ..;
 	cp ./bonus/pipex_bonus ./pipex_bonus
 
 all: $(NAME) $(NAME_BONUS)
@@ -15,10 +15,13 @@ all: $(NAME) $(NAME_BONUS)
 bonus: $(NAME_BONUS)
 
 clean: 
-	make clean -C ./mandatory/; make clean -C ./bonus/;
+	cd ./mandatory; make clean; cd ..;
+	cd ./bonus; make clean; cd ..;
 
 fclean: 
-	make fclean -C ./mandatory/; make fclean -C ./bonus/; rm -f $(NAME) $(NAME_BONUS);
+	cd ./mandatory; make fclean; cd ..;
+	cd ./bonus; make fclean; cd ..;
+	rm -f $(NAME) $(NAME_BONUS);
 
 re: fclean all
 

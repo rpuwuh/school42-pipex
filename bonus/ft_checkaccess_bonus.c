@@ -6,20 +6,11 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 03:36:19 by mikhail           #+#    #+#             */
-/*   Updated: 2022/03/07 15:30:59 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:43:20 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-
-int	ft_checkcmdraw(char *cmd)
-{
-	if (!ft_strchr(cmd, '/'))
-		return (1);
-	if (access(cmd, X_OK) == -1)
-		return (0);
-	return (1);
-}
 
 int	ft_freesplitstr(char ***s)
 {
@@ -68,7 +59,7 @@ static int	ft_checkcmds(char **paths, char **cmds)
 	i = 0;
 	while (cmds[i])
 	{
-		if (!ft_checkcmdraw(cmds[i++]) && !ft_checkcmd(paths, cmds[i]))
+		if (!ft_checkcmd(paths, cmds[i]))
 		{
 			write(2, "No access to a command\n", 23);
 			return (0);

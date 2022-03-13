@@ -6,11 +6,12 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:37:21 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/07 16:18:41 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/13 10:50:06 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+#include <unistd.h>
 
 void	ft_heredocprocess(t_global *glb, int *fds, char *s2)
 {
@@ -28,13 +29,15 @@ void	ft_heredocprocess(t_global *glb, int *fds, char *s2)
 	if (!parent)
 	{
 		close(fds[0]);
-		write(fds[1], s2, ft_strlen(s2) + 1);
+		write(fds[1], s2, ft_strlen(s2));
 		ft_cleanfreestring(&s2);
 		exit(0);
 	}
 	dup2(fds[0], 0);
+	close(fds[0]);
 	close(fds[1]);
 	wait(0);
+	printf("");
 }
 
 void	ft_heredoc(t_global *glb, char *lim, int *fds)
@@ -69,6 +72,7 @@ int	ft_choosebehaviour(int argc, char **argv, char **env, t_global **glb)
 		ft_checkaccess(*glb);
 		(*glb)->fdfiles[0] = open((*glb)->infile, O_RDONLY);
 		dup2((*glb)->fdfiles[0], 0);
+		close((*glb)->fdfiles[0]);
 		(*glb)->fdfiles[1] = open((*glb)->outfile, 0x601, 0644);
 		return (0);
 	}
@@ -89,6 +93,8 @@ int	main(int argc, char **argv, char **env)
 	int			fds[2];
 
 	glb = 0;
+	fds[0] = 0;
+	fds[1] = 1;
 	if (ft_choosebehaviour(argc, argv, env, &glb))
 		ft_heredoc(glb, argv[2], fds);
 	i = 0;

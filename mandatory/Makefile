@@ -14,8 +14,8 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra 
 
-$(NAME): $(OBJDIR) $(OBJDIR)$(NAME).o $(SRC_O) $(HEADER) Makefile
-	$(CC) $(CFLAGS) $(OBJDIR)$(NAME).o $(SRC_O)  -o $(NAME)
+$(NAME): $(OBJDIR) $(SRC_O) $(OBJDIR)$(NAME).o  $(HEADER) Makefile
+	$(CC) $(CFLAGS)  $(SRC_O) $(OBJDIR)$(NAME).o -o $(NAME)
 
 $(OBJDIR):
 	mkdir $(OBJDIR)

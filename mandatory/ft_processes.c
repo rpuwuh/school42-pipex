@@ -6,12 +6,11 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 09:42:28 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/03/07 14:27:56 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/03/13 11:18:39 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdio.h>
 
 void	ft_processerr(t_global *glb, char **s, char ***split)
 {
@@ -51,10 +50,11 @@ void	ft_doexecve(t_global *glb, int i)
 void	ft_domiddlecmds(t_global *glb, int *fds, int i)
 {
 	pid_t	parent;
+	int		j;
 
-	i = pipe(fds);
+	j = pipe(fds);
 	parent = fork();
-	if (i < 0 || parent < 0)
+	if (j < 0 || parent < 0)
 		ft_processerr(glb, 0, 0);
 	if (!parent)
 	{
