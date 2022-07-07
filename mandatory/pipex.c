@@ -6,7 +6,7 @@
 /*   By: bpoetess <bpoetess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:37:21 by bpoetess          #+#    #+#             */
-/*   Updated: 2022/07/07 05:18:50 by bpoetess         ###   ########.fr       */
+/*   Updated: 2022/07/07 05:22:05 by bpoetess         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int	main(int argc, char **argv, char **env)
 	ft_glbclear(&glb);
 	close(glb->fdfiles[0]);
 	close(glb->fdfiles[1]);
-	exit (0);
+	exit (8);
 }
